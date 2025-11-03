@@ -20,7 +20,7 @@ This repository contains a single Python script/notebook that trains and evaluat
 
 ```
 ├── README.md                  
-├── main.py or notebook.ipynb  
+├── main.py 
 ├── maize.csv                 
 
 ```
