@@ -19,11 +19,10 @@ This repository contains a single Python script/notebook that trains and evaluat
 ## 📁 Repository Structure
 
 ```
-.
-├── README.md                  # This file
-├── main.py or notebook.ipynb  # Your code (choose one style)
-├── maize.csv                  # Place your dataset here OR update the path in code
-└── outputs/                   # (optional) Where plots & logs can be written
+├── README.md                  
+├── main.py or notebook.ipynb  
+├── maize.csv                 
+
 ```
 
 ## 🧰 Requirements
