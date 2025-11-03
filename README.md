@@ -10,13 +10,8 @@ This repository contains a single Python script/notebook that trains and evaluat
 * Train/test split with `random_state=42`
 * **ElasticNetCV** with grid over `alpha` and `l1_ratio` (5-fold CV)
 * **PCR** via `Pipeline(StandardScaler → PCA → LinearRegression)` with GridSearchCV over number of components
-* **PLS** with GridSearchCV over number of components and a final fitted PLS model for inspection
-* Saved plots:
-  * `data_dist.png` — histogram + KDE of `DtoA`
-  * `mse_vs_alpha_plot.png` — CV-MSE vs `log10(alpha)` at best `l1_ratio`
-  * `cv_mse_vs_l1_ratio_plot_from_path.png` — CV-MSE vs `l1_ratio` at best `alpha`
-  * `cv_mse_contour_plot.png` — 2D CV-MSE surface over (`alpha`, `l1_ratio`)
-  * `coefficient_plot.png` — Elastic Net coefficient shrinkage path
+* **PLS** with GridSearchCV over the number of components and a final fitted PLS model for inspection
+* Saved plots
 * A text log with all printed outputs: `elasticnet_log.txt`
 
 ---
@@ -57,26 +52,6 @@ pip install numpy pandas scikit-learn matplotlib seaborn
 * Categorical feature: `Geno_Code` (label encoded). The script auto-strips whitespace from column names and drops any rows containing missing values.
 ---
 
-## ▶️ How to Run
-
-### Option A — As a script (`main.py`)
-
-1. Copy your current code into a file named `main.py` at the project root.
-2. (Recommended) Update all save paths to a local `outputs/` directory:
-
-   ```python
-   LOG_DIR = Path('outputs')
-   LOG_DIR.mkdir(parents=True, exist_ok=True)
-   log_path = LOG_DIR / 'elasticnet_log.txt'
-   ```
-3. Run:
-
-   ```bash
-   python main.py
-   ```
-
-
-
 ## 🔍 Methods & Tuning Details
 
 ### Elastic Net
@@ -86,7 +61,7 @@ pip install numpy pandas scikit-learn matplotlib seaborn
   * `alphas = logspace(-3, 3, 50)`
   * `l1_ratio = np.arange(0.00, 1.00, 0.02)`
 * **Model:** `ElasticNetCV(max_iter=10000, cv=cv, n_jobs=-1, random_state=42)`
-* **Outputs:** active vs zeroed coefficients, best `alpha` & `l1_ratio`, CV-MSE curves and contour, coefficient path plot
+* **Outputs:** active vs zeroed coefficients, best `alpha` & `l1_ratio`, CV-MSE curves, coefficient path plot
 
 ### PCR (Principal Components Regression)
 
@@ -100,18 +75,6 @@ pip install numpy pandas scikit-learn matplotlib seaborn
 * **Final model for inspection:** `PLSRegression(n_components=1, scale=True)`
 * **Outputs:** best `n_components`, CV-MSE curve, final test metrics
 
----
-
-## 📊 Saved Figures
-
-After a successful run, you should have:
-
-* `data_dist.png`
-* `mse_vs_alpha_plot.png`
-* `cv_mse_vs_l1_ratio_plot_from_path.png`
-* `cv_mse_contour_plot.png`
-* `coefficient_plot.png`
-  
 ---
 
 ## ✅ Reproducibility Notes
