@@ -34,22 +34,6 @@ This repository contains a single Python script/notebook that trains and evaluat
 * matplotlib
 * seaborn
 
-You can create a virtual environment and install dependencies with:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate         # On Windows: .venv\Scripts\activate
-pip install -U pip
-pip install numpy pandas scikit-learn matplotlib seaborn
-```
----
-
-## 🔢 Data Assumptions
-
-* File path to data: `~/sta5703/maize.csv`
-* Target column: `DtoA`
-* Categorical feature: `Geno_Code` (label encoded). The script auto-strips whitespace from column names and drops any rows containing missing values.
----
 
 ## 🔍 Methods & Tuning Details
 
